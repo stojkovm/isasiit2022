@@ -1,0 +1,1 @@
+CREATE ALIAS povezi FOR "rs.ac.uns.ftn.isa.jdbc.DbDemo.povezi";
