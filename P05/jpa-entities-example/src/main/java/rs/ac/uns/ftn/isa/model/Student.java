@@ -12,7 +12,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /*
  * Efikasnost asocijacija:
@@ -32,6 +34,18 @@ import javax.persistence.OneToMany;
  */
 
 @Entity
+/*
+ * Primer definisanja indeksa sa vise kolona
+ */
+@Table(
+		name = "student",
+		indexes = {
+				@Index(
+						name = "index_lastname_firstname",
+						columnList = "lastName, firstName"
+				)
+		}
+)
 public class Student implements Serializable {
 	
 	private static final long serialVersionUID = -4356825398598425756L;

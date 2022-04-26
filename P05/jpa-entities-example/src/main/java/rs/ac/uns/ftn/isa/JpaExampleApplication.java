@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 
 import rs.ac.uns.ftn.isa.model.Address;
 import rs.ac.uns.ftn.isa.model.Project;
@@ -31,6 +34,11 @@ public class JpaExampleApplication implements CommandLineRunner {
 	public static void main(String[] args) {
 		SpringApplication.run(JpaExampleApplication.class, args);
 	}
+	
+	@Bean
+    public Hibernate5Module hibernate5Module() {
+        return new Hibernate5Module();
+    }
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -49,6 +57,8 @@ public class JpaExampleApplication implements CommandLineRunner {
 		System.out.println(s2 + " --- " + s2.getProjects());
 		Project p = projectService.fetchProjectWithStudent(1);
 		System.out.println(p.getStudent());
+		
+		studentService.fetchStudentsByLastNameAndFirstName("Zikic", "Zika").forEach(System.out::println);
 	}
 
 }

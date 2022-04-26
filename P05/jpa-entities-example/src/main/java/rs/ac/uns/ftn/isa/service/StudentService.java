@@ -1,5 +1,7 @@
 package rs.ac.uns.ftn.isa.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +43,10 @@ public class StudentService {
 		s.addProject(p2);
 		
 		studentRepository.save(s);
+	}
+	
+	public List<Student> fetchStudentsByLastNameAndFirstName(String lastName, String firstName) {
+		return studentRepository.findByLastNameAndFirstName(lastName, firstName);
 	}
 
 }

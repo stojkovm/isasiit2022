@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /*
  * Prednosti strategije nasledjivanja gde se koristi po jedna tabela po konkretnoj klasi:
@@ -29,7 +30,8 @@ import javax.persistence.SequenceGenerator;
 // ovom anotacijom se naglasava da je ova klasa koren hijerarhije koja koristi
 // koncept jedna tabela po konkretnoj klasi
 @Inheritance(strategy=TABLE_PER_CLASS)
-public abstract class BillingDetails {
+@Table(name="v1_billingdetails")
+public class BillingDetails {
 
 	@Id
 	@SequenceGenerator(name = "mySeqGenV1", sequenceName = "mySeqV1", initialValue = 1, allocationSize = 1)

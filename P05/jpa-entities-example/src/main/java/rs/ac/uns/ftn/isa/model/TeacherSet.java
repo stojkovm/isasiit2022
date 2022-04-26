@@ -91,6 +91,22 @@ public class TeacherSet implements Serializable {
         }
     }
 
+    /*
+     * Hibernate zahteva da entitet mora biti jednak samom sebi kroz sva stanja
+     * (transient!!!, managed, detached, removed). Za proveru izmene entiteta Hibernate koristi svoj
+     * dirty checking mehanizam koji ne koristi equals i hashCode, ali ako se entiteti cuvaju u Setu
+     * ili se radi njihov reattach u novi Persistence Context, treba uraditi override equals i hashCode metoda.
+     * Takodje, kada se radi sync obe strane bidirekcionalne veze pomocu pomocnih metoda treba uraditi override equals i hashCode metoda.
+     * 
+     * Ukoliko se za equals i hashCode koriste neki jedinstveni atributi koje korisnik zna unapred, override ce raditi kako treba.
+     * Problem nastaje ako se za equals i hashCode oslanjamo na jedinstveni kljuc koji generise baza.
+     * Posto je to vrednost koja se dobija naknadno, entiteti mogu imati razlicite ID vrednosti u razlicitim stanjima:
+     * null u transient stanju i ne null u managed, detached i removed stanju.
+     * Dva objekta smatramo jednakim ako je njihov ID ne null i ako su im jednake ID vrednosti.
+     * To znaci da dva objekta u transient stanju (imaju ID null jer baza jos uvek nije generisala kljuc za njih),
+     * mogu biti jednaki samo ako referenciraju isti objekat. To mozemo postici ako hashCode vrati konstantu.
+     * Ovaj scenario moze uticati na performanse sistema u slucaju da se radi sa velikim brojem objekata na ovaj nacin.
+     */
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) {

@@ -14,8 +14,8 @@ Iz primera pokrenuti klasu `rs.ac.uns.ftn.isa.InheritanceExampleApplication` iz 
 
 ## Sadržaj primera
 
-Primeri tri varijante za mapiranje nasleđivanja. U svim varijantama koriste se sledeće klase:
-`BillingDetails` - apstraktna klasa sa jednim atributom
+Primeri četiri varijante za mapiranje nasleđivanja. U svim varijantama koriste se sledeće klase:
+`BillingDetails` - (apstraktna) klasa sa jednim atributom
 `CreditCard`     - konkretna klasa sa podacima o kreditnoj kartici
 `BankAccount`    - konkretna klasa sa podacima o bankovnom racunu
 
@@ -34,3 +34,8 @@ Paket `rs.ac.uns.ftn.isa.v3` sadrži klase `BillingDetails`, `BankAccount` i `Cr
 Primer demonstrira strategiju kreiranja po jedne tabele za svaku klasu.
 Veze nasledjivanja se ovde prikazuju pomocu spoljnih kljuceva. Cak i apstraktne klase se mapiraju na tabele u bazi.
 U tabelama koje odgovaraju klasama naslednicama ne ponavljaju se nasledjeni propertiji.
+
+Paket `rs.ac.uns.ftn.isa.v4` sadrži klase `BillingDetails`, `BankAccount` i `CreditCard` koje predstavljaju hijerarhiju.
+Primer demonstrira alternativnu strategiju kreiranja po jedne tabele po konkretnoj klasi.
+Ovde se apstraktna klasa anotira sa `@MappedSuperclass`.
+Apkstraktna klasa ne može se koristiti u upitima.
