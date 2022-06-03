@@ -1,6 +1,6 @@
 ## Message Queue
 
-Za potrebe razumevanja primera potrebno je prethodno pročitati [MessageQueue.pdf](https://github.com/stojkovm/isasiit2022/blob/main/Vezbe10/MessageQueue.pdf) iz foldera P11.
+Za potrebe razumevanja primera potrebno je prethodno pročitati [MessageQueue.pdf](https://github.com/stojkovm/isasiit2022/blob/master/P11/MessageQueue.pdf) iz foldera P11.
 
 Kratak pregled prednosti korišćenja MQ nalazi se na [linku](https://blog.iron.io/top-10-uses-for-message-queue/).
 
